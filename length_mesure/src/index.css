@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* 添加到你的CSS文件中 */
+.ifcjs-dimension-label {
+  background-color: black;
+  font-family: sans-serif;
+  color: white;
+  padding: 8px;
+  border-radius: 8px;
+  pointer-events: all;
+  transition: background-color 200ms ease-in-out;
+}
+
+.ifcjs-dimension-label:hover {
+  background-color: grey;
+}
+
+.ifcjs-dimension-preview {
+  background-color: #ffffff;
+  opacity: 0.3;
+  padding: 8px;
+  border-radius: 100%;
+}
