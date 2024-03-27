@@ -8,10 +8,16 @@ const SimpleScene = () => {
 
     const container = document.getElementById('scene-container');
     //最后return <div id="scene-container">
-
+    
     const components = new OBC.Components(); //创建openbim-components库中Components类的一个实例。
     components.scene = new OBC.SimpleScene(components);
-    components.renderer = new OBC.SimpleRenderer(components, container);//allows us to see things moving around.
+    
+    const postProdRenderer = new OBC.PostproductionRenderer(
+      components,
+      container
+    );
+    components.renderer = postProdRenderer; //allows us to see things moving around.
+   
     components.camera = new OBC.SimpleCamera(components); //defines where we are and in that 3D world.
     components.raycaster = new OBC.SimpleRaycaster(components);
 
@@ -44,6 +50,9 @@ const SimpleScene = () => {
     loadButton.tooltip = "Load model";
     toolbar.addChild(loadButton);
     loadButton.onClick.add(() => loadFragments());
+
+    postProdRenderer.postproduction.enabled = true;
+    postProdRenderer.postproduction.customEffects.outlineEnabled = true;
 
     highlighter.updateHighlight();
     
@@ -81,10 +90,8 @@ const SimpleScene = () => {
           highlighter.highlightByID('default', lastSelection);
           }
           }
-
-    return () => {
-      components.dispose();
-    };
+    components.scene.setup();
+    
   }, []);
 
   return <div id="scene-container" style={{ width: '600px', height: '400px' }}></div>;
